@@ -30,9 +30,9 @@ volumes:
     networks:
       - mojnet
     
-  api:
+  app:
     build:
-      context: ../api
+      context: ../app
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
