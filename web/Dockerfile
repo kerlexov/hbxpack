@@ -1,14 +1,6 @@
-FROM node:alpine AS builder
+FROM nginx:alpine
 
-WORKDIR /app
-#package.json
-COPY ./package.json ./
-RUN npm install
-COPY ./ ./
-RUN npm run build
+RUN rm /etc/nginx/conf.d/*
 
-FROM nginx
-EXPOSE 3000
-
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY proxy.conf /etc/nginx/conf.d/
+#COPY static /usr/share/nginx/html

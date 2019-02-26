@@ -17,13 +17,9 @@ services:
       - mojabaza:/var/lib/mysql
     networks:
       - mojnet
-
-volumes:
-  mojabaza:
-
   web:
     build:
-      context: ../web
+      context: web
       dockerfile: Dockerfile
     ports:
       - "80:80"
@@ -32,14 +28,14 @@ volumes:
     
   app:
     build:
-      context: ../app
+      context: app
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     depends_on:
       - db
     networks:
-      - mynet
+      - mojnet
     environment:
       - DB_HOST=localhost
       - DB_PORT=3306
@@ -53,4 +49,7 @@ volumes:
 networks:
   mojnet:
     driver: "bridge"
+
+volumes:
+  mojabaza:
   

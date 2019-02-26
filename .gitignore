@@ -3,3 +3,4 @@ app/src/golang.org/
 app/pkg/
 app/bin/
 .DS_Store
+app/.DS_Store
