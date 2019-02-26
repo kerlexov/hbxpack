@@ -7,4 +7,5 @@ import (
 
 func AdminGroup(g *echo.Group) {
     g.GET("/", handlers.MainAdmin)
+    g.GET("/logout") handlers.Logout)
 }

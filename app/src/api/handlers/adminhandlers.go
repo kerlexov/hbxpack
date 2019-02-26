@@ -7,5 +7,5 @@ import (
 )
 
 func MainAdmin(c echo.Context) error {
-    return c.String(http.StatusOK, "horay you are on the secret amdin main page!")
+    return c.String(http.StatusOK, "admin stranica")
 }

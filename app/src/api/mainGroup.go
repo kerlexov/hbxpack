@@ -6,7 +6,6 @@ import (
 )
 
 func MainGroup(e *echo.Echo) {
-    e.Static("/", "static")
     e.GET("/login", handlers.Login)
     e.GET("/yallo", handlers.Yallo)
     e.GET("/cats/:data", handlers.GetCats)

@@ -19,7 +19,7 @@ func Login(c echo.Context) error {
     password := c.QueryParam("password")
 
     // check username and password against DB after hashing the password
-    if username == "jack" && password == "1234" {
+    if username == "user" && password == "secret" {
         cookie := &http.Cookie{}
 
         // this is the same
@@ -27,7 +27,7 @@ func Login(c echo.Context) error {
 
         cookie.Name = "sessionID"
         cookie.Value = "some_string"
-        cookie.Expires = time.Now().Add(48 * time.Hour)
+        cookie.Expires = time.Now().Add(1 * time.Hour)
 
         c.SetCookie(cookie)
 
@@ -49,10 +49,10 @@ func Login(c echo.Context) error {
 
 func createJwtToken() (string, error) {
     claims := JwtClaims{
-        "jack",
+        "user",
         jwt.StandardClaims{
             Id: "main_user_id",
-            ExpiresAt: time.Now().Add(24 * time.Hour).Unix(),
+            ExpiresAt: time.Now().Add(1 * time.Hour).Unix(),
         },
     }
 
@@ -64,4 +64,10 @@ func createJwtToken() (string, error) {
     }
 
     return token, nil
+}
+
+/*TODO logout*/
+func Logout(c echo.Context) error {
+
+return nil;
 }

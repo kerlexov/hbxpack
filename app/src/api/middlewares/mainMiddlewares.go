@@ -7,7 +7,8 @@ import (
 
 func SetMainMiddlewares(e *echo.Echo) {
     e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
-        Root: "../static",
+        Root: "static",
+        Browse: true,
     }))
 
     e.Use(serverHeader)
@@ -15,7 +16,7 @@ func SetMainMiddlewares(e *echo.Echo) {
 
 func serverHeader(next echo.HandlerFunc) echo.HandlerFunc {
     return func(c echo.Context) error {
-        c.Response().Header().Set(echo.HeaderServer, "BlueBot/1.0")
+        c.Response().Header().Set(echo.HeaderServer, "HowHighTech/0.0.1")
         c.Response().Header().Set("notReallyHeader", "thisHaveNoMeaning")
 
         return next(c)
